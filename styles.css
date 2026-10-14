@@ -9,11 +9,11 @@
 :root {
     --primary-color: #FF6B9D;      /* Rosa quente */
     --secondary-color: #FFA07A;    /* Salmão */
-    --accent-color: #080807;       /* Ouro */
+    --accent-color: #e7e704;       /* Ouro */
     --bg-color: #080808;           /* Fundo creme claro */
     --text-color: #FF6B9D;         /* Texto escuro */
-    --light-text: #ffffff;         /* Texto claro */
-    --border-color: #FFE4D6;       /* Borda clara */
+    --light-text: #000000;         /* Texto claro */
+    --border-color: #e44d02;       /* Borda clara */
 }
 
 /* Reset e Estilos Globais */
@@ -182,7 +182,7 @@ body {
 .interactive-section {
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 160, 122, 0.1));
+    background: linear-gradient(135deg, rgba(238, 5, 83, 0.1), rgba(255, 160, 122, 0.1));
     border-radius: 20px;
     margin-bottom: 60px;
     animation: fadeInUp 1s ease-out 0.8s both;
@@ -363,5 +363,80 @@ body {
 
     .heart-button {
         font-size: 2.5rem;
+    }
+}
+
+
+/* Ampliar fotos ao clicar */
+.gallery-item {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-image {
+    display: block;
+    max-width: 92vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transform: scale(0.96);
+    transition: transform 0.25s ease;
+}
+
+.lightbox.active .lightbox-image {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 14px;
+    right: 22px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 2.8rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.lightbox-close:hover {
+    color: var(--primary-color);
+}
+
+@media (max-width: 480px) {
+    .lightbox {
+        padding: 16px;
+    }
+
+    .lightbox-image {
+        max-width: 96vw;
+        max-height: 86vh;
+    }
+
+    .lightbox-close {
+        top: 8px;
+        right: 14px;
     }
 }
